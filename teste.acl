@@ -1,0 +1,113 @@
+*** teste para o interpretador ACL ***
+
+dimg glob[10]
+
+program dodim
+  dim x[10]
+  define y
+  set x[2] = 3
+  set glob[4] = 5
+
+  set x[2] = 2 + 2
+  set x[2] = 2 + y
+  set x[2] = 2 + x[2]
+  set x[2] = 2 <> 2
+
+  set x[2] = y + 2
+  set x[2] = y + y
+  set x[2] = y + x[2]
+
+  set x[2] = x[2] + 2
+  set x[2] = x[2] + y
+  set x[2] = x[2] + x[2]
+
+end
+
+program doact
+  global sign
+  define value
+  set sign=0
+  pend value from sign
+  println "act"
+  set value = 5/2
+  println "integer div = " VALUE
+end
+
+program delay
+  delay 100
+end
+
+run doact
+run delay
+priority delay 2
+delay 10
+
+global k l m
+
+program teste2
+  define x
+  for x=1 to 30
+    print "["
+    print k
+    println "]"
+    delay 10
+    set k = k + 1
+  endfor
+end
+
+program teste
+
+define x y
+
+set x = 10
+* set k = x + 1
+
+println "k = " k
+
+for x=1 to 2
+  for y=5 to 4
+    print x
+    print " "
+    println y
+    if y = 5
+       andif x = 2
+      println " y = 4 && x = 1 "
+      stat
+    else
+      println " ... "
+    endif
+    set k = k + 1
+    delay 10
+  endfor
+endfor
+
+wait k>=15
+stop teste2
+
+goto 1
+
+println "nada"
+
+label 1
+
+end
+
+run teste2
+gosub teste
+gosub teste
+
+read "Digite um valor" k
+println k
+println "Digite uma tecla"
+get k
+println k
+
+* stop
+
+run teste2
+post 1 to sign
+delay 50
+stop teste2
+println "fim"
+
+

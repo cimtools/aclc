@@ -1,0 +1,31 @@
+PROGRAM teste
+  define i u a xx
+  dim vet[10]
+  dim soma[10]
+
+ for i=1 to 10
+
+  set a=a+1
+
+  set vet[i]=a+1
+
+  set soma[i]=vet[i]/a
+
+  print "vet: [" i "] = " soma[i]
+
+  println
+
+ endfor
+ println "Digite um valor: "
+ read xx
+
+ if xx<5
+   andif xx>10
+   println "Fora"
+   else
+   println "Dentro"
+ endif
+
+end
+
+run teste
